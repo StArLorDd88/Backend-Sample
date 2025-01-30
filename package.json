@@ -1,0 +1,12 @@
+{
+  "name": "backend-sample",
+  "version": "1.0.0",
+  "description": "Backend-Sample",
+  "license": "ISC",
+  "author": "Himanshu",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
