@@ -7,7 +7,7 @@ const app = express();
 
 // major middlewares
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: process.env.CORS_ORIGIN || "http://localhost:8000",
     credentials: true
 }))
 
@@ -19,8 +19,8 @@ app.use(express.urlencoded({
     extended: true, limit: "20kb"
 }))
 
-app.use(express.static("public"))
-app.use(cookieParser())
+app.use(express.static("public"));
+app.use(cookieParser());
 
 // routes import
 import userRouter from './routes/user.routes.js'
@@ -28,4 +28,4 @@ import userRouter from './routes/user.routes.js'
 // routes declaration
 app.use("/users", userRouter)
 
-export default app; 
+export default app;
