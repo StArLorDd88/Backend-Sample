@@ -11,15 +11,22 @@ cloudinary.config({
 const uploadOnCloudinary = async (localFilePath) => {
     try {
         if  (!localFilePath) return null
+
         // upload the file on cloudinary
         const response = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "auto"
         })
         // file has been uploaded succesfully
-        console.log("file has been uploaded successfully", response.url);
+        // console.log("file has been uploaded successfully", response.url);
+        fs.unlink(localFilePath) //to unlink the file after uploading or if it fails
         return response
     } catch (error) {
         fs.unlinkSync(localFilePath) //remove the locally saved temporary file as the upload operation got failed
         return null;
     }
 }
+
+export {uploadOnCloudinary}
+
+
+// to study what kind of data is send through response we can console.log the response
